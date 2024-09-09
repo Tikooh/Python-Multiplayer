@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class PlacementManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    GameObject mouseIndicator, cellIndicator;
+    [SerializeField]
+    private InputManager inputManager;
 
-    // Update is called once per frame
+    [SerializeField]
+    private Grid grid;
     void Update()
     {
-        
+        Vector3 mousePosition = inputManager.GetSelectedMapPosition();
+        Vector3Int gridPosition = grid.WorldToCell(mousePosition);
+        mouseIndicator.transform.position = mousePosition;
+        cellIndicator.transform.position = grid.CellToWorld(gridPosition);
     }
 }
