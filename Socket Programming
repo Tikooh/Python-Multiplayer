@@ -1,0 +1,19 @@
+https://www.youtube.com/watch?v=KBBJqPL5-eU
+
+Modules used:
+Socket
+Threading
+
+SOCKET:
+
+socket.socket(socket.AF.INET, socket.SOCK_STREAM) 
+AF_INET is used to specify which address family (IPV4 IPV6 UNIX BLUETOOTH) can be used with the socket.
+SOCK_STREAM means it is a TCP socket 
+
+https://stackoverflow.com/questions/35725732/what-is-the-function-of-sock-stream
+https://stackoverflow.com/questions/1593946/what-is-af-inet-and-why-do-i-need-it
+
+server.bind((HOST,PORT))
+Any users have to connect to that host and that port 
+
+server.listen(LISTENER_LIMIT)
