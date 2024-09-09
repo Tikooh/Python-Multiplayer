@@ -1,0 +1,13 @@
+Unity Shaders:
+
+Multiply node:
+https://docs.unity3d.com/Packages/com.unity.shadergraph@6.9/manual/Multiply-Node.html
+Returns the result of A * B. Can be used to ensure the size of shader conforms to global default scale
+
+Object Node:
+https://docs.unity3d.com/Packages/com.unity.shadergraph@6.9/manual/Object-Node.html
+Used for how the object scales in world space
+
+One minus node
+https://docs.unity3d.com/Packages/com.unity.shadergraph@6.9/manual/One-Minus-Node.html
+Used for flipping texture masks
