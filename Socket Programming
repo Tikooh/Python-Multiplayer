@@ -17,3 +17,18 @@ server.bind((HOST,PORT))
 Any users have to connect to that host and that port 
 
 server.listen(LISTENER_LIMIT)
+
+server.accept() gives two arguments, socket and client address.
+
+threading.Thread(target=client_handler, args=(client, )).start()
+Using threading to ensure it runs at the same time as server listening.
+https://www.geeksforgeeks.org/socket-programming-multi-threading-python/
+
+username = client.recv(2048).decode('utf-8')
+recv = receive maximum size of message = 2048
+decode in encoding utf-8
+
+Have a function for listening to messages
+All messages must be encoded to send and decoded to receive
+
+client.sendall(message.encode())
