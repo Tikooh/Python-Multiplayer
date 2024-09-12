@@ -1,7 +1,11 @@
 import socket
 import threading
 
-HOST = '127.0.0.1'
+# hostname = socket.gethostname()
+# HOST = socket.gethostbyname(hostname)
+
+# print(f'running on host {HOST}')
+HOST = '192.168.0.64'
 PORT = 1234 # use any port between 0 to 65535
 LISTENER_LIMIT = 5 # amount of connections
 
@@ -11,10 +15,34 @@ active_clients = [] #list of all connected users
 def listen_for_messages(client, username):
 
     while 1:
-        response = client.recv(2048).decode('utf-8')
+        response = client.recv(2048).decode()
+        print(f'Response is {response}')
 
-        final_msg = username + '¬' + response
-        send_messages_to_all(final_msg)
+        if response[0] == "~":
+            file_size = client.recv(2048).decode()
+            if file_size == 0:
+                print("File is empty")
+            else:
+                print(f'File size is {file_size}')
+
+            file = open(response, "wb")
+            file_bytes = b""
+
+            done = False
+            while not done:
+                data = client.recv(2048)
+                if file_bytes[-5:] == b"<END>": #once <END> reachedall data received for response
+                    print("All data received")
+                    done = True
+                else:
+                    file_bytes += data
+            
+            file.write(file_bytes)
+            file.close()
+
+        else:
+            final_msg = username + '¬' + response
+            send_messages_to_all(final_msg)
 
 
 def send_message_to_client(client, message):
