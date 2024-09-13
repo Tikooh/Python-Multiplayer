@@ -32,3 +32,11 @@ Have a function for listening to messages
 All messages must be encoded to send and decoded to receive
 
 client.sendall(message.encode())
+
+Webserver
+https://www.codementor.io/@joaojonesventura/building-a-basic-http-server-from-scratch-in-python-1cedkg0842
+
+https://stackoverflow.com/questions/68819127/python-how-to-read-details-of-a-request-at-packet-level
+
+Multi connection server
+https://realpython.com/python-sockets/
