@@ -3,7 +3,7 @@ import threading
 import os
 
 
-HOST = '192.168.0.64'
+HOST = ''
 PORT = 1234
 
 def listen_for_messages_from_server(client):
