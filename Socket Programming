@@ -33,6 +33,36 @@ All messages must be encoded to send and decoded to receive
 
 client.sendall(message.encode())
 
+FOR DOCKER CONTAINER
+
+FROM debian
+
+WORKDIR /usr/src
+
+RUN apt-get update && \
+    apt-get install -y python3 python3-pip
+#installing python
+
+RUN useradd --create-home appuser 
+# runs as root user
+
+COPY server.py .
+#copies the code to the docker image
+
+ENV API_KEY=testuser
+# pass as environment variable used for user authentication
+
+EXPOSE 1234
+
+CMD ["python3", "server.py"]
+
+using sudo lsof -i -P -n | grep LISTEN
+after running docker container to see if socket is being used but it isn't
+
+https://www.abstractapi.com/guides/ip-geolocation/get-ip-address-python
+
+HTTP uses port 80 
+
 Webserver
 https://www.codementor.io/@joaojonesventura/building-a-basic-http-server-from-scratch-in-python-1cedkg0842
 
